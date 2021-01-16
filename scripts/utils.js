@@ -17,7 +17,6 @@ class Measures{
 
 class CssHelper{
 
-
     static assignProp(domElement,bulkProperty){
         Object.keys(bulkProperty).forEach(
             function(property){
@@ -27,15 +26,28 @@ class CssHelper{
     }
 
     static assignStyleProp(domElement, bulkProperty){
-        assignProp(domElement.style, bulkProperty);
+        CssHelper.assignProp(domElement.style, bulkProperty);
     }
 
     static  assignStylePropBulk(domElements, bulkProperty){
         domElements.forEach(
             function(eachDomElement){
-                assignStyleProp(eachDomElement, bulkProperty);
+                CssHelper.assignStyleProp(eachDomElement, bulkProperty);
             }
         );
+    }
+
+}
+
+
+class ObjectUtils{
+
+
+    static propertyAppend(objectliteral, propertyObjectLiteral){
+        for(let property in propertyObjectLiteral){
+            objectliteral[property] = propertyObjectLiteral[property];
+        }
+
     }
 
 }

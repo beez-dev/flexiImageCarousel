@@ -1,7 +1,9 @@
 function main(){
     initialSetup();
+
+
 }
 
 
 
-window.addEventListener('DOMContentLoaded', function(){main()} );
+window.onload = main;
