@@ -1,7 +1,7 @@
 // /* TC */ - test code
 var leftArrow = null;
 var rightArrow = null;
-var mFlexiImages = [];/* dom objects */
+var mFlexiImages = [];/* flexi wrappers for dom objects */
 var mFlexiImagePaths = []; /* string literals for paths */
 var mFlexiIndicators = []; /* dom objects for indicators */
 
@@ -13,7 +13,7 @@ function initialSetup(){
     CssHelper.assignStyleProp(mFlexiContainer,{
             "position":"relative",
             "border":"none", /* border is not allowed else height/width miscalculation */
-            /* "overflow":"hidden" */
+           /*  "overflow":"hidden" */
         });
   
 
@@ -28,10 +28,6 @@ function initialSetup(){
     let widthPercent = 5;
     let heightPercent = 15;
 
-    if(mFlexiContainerType === mFlexi_PORTRAIT){
-        [widthPercent, heightPercent] = [heightPercent, widthPercent];
-    }
-
     
     carouselArrowProp["top"] = Measures.percent(50-(heightPercent/2));/* centering on the div */
     ObjectUtils.propertyAppend(carouselArrowProp,{
@@ -45,18 +41,18 @@ function initialSetup(){
     leftArrow.adjustCssProp("background", `url(${mFlexiCarouselLeftArrowImg}) center center no-repeat` );
     leftArrow.adjustCssProp("marginLeft", Measures.px("10"));
     leftArrow= leftArrow.build();
-    mFlexiContainer.appendChild(leftArrow);
+    mFlexiContainer.appendChild(leftArrow.getDomObj());
 
     rightArrow = new FlexiImg(carouselArrowProp, false, -2);
     rightArrow.adjustCssProp("background", `url(${mFlexiCarouselRightArrowImg}) center center no-repeat`);
     rightArrow.adjustCssProp("right", Measures.px(0));
     rightArrow.adjustCssProp("margin-right", Measures.px(10));
     rightArrow = rightArrow.build();
-    mFlexiContainer.appendChild(rightArrow);
+    mFlexiContainer.appendChild(rightArrow.getDomObj());
 
     let mFlexiImgTags = mFlexiContainer.getElementsByTagName("img");
 
-    let imageCount = mFlexiImgTags.length;
+    let mFlexiImgCount = mFlexiImgTags.length;
     let indicatorBottomMargin = 10;
     let indicatorMarginRight = 10;
     let carouselIndicatorProps = {
@@ -74,7 +70,7 @@ function initialSetup(){
             "zIndex":2
         };
     
-    let totalFlexiIndicatorWidth = imageCount * (mFlexiIndicatorSize + mFlexiIndicatorMarginRight - 1); /* -1 for rightmost margin is not counted */
+    let totalFlexiIndicatorWidth = mFlexiImgCount * (mFlexiIndicatorSize + mFlexiIndicatorMarginRight - 1); /* -1 for rightmost margin is not counted */
     let flexiIndicatorSpacingFactor = mFlexiIndicatorSize + mFlexiIndicatorMarginRight;
     let mFlexiLeft = Math.floor(mFlexiContainerWidth/2) - ( Math.floor( totalFlexiIndicatorWidth/2 ) );  
     
@@ -92,40 +88,42 @@ function initialSetup(){
     Array.from(mFlexiImgTags).forEach(
         function(eachImageTag){
             let flexiImagePath = eachImageTag.getAttribute("src");
-            mFlexiImagePaths.push(flexiImagePath);
             mFlexiContainer.removeChild(eachImageTag);
             let carouselIndicator = new FlexiImg(carouselIndicatorProps, true);
             let flexiID = carouselIndicator.getFlexiID();
             carouselIndicator.adjustCssProp("left", Measures.px(mFlexiLeft));
             mFlexiLeft += flexiIndicatorSpacingFactor;
-
             carouselIndicator = carouselIndicator.build();/* conversion to a DOM element */
-            carouselIndicator.addEventListener("mouseenter", enterEvent=>{
-                    CssHelper.assignStyleProp(carouselIndicator,{"background":"#ffa500"} );
+            let carouselIndicatorDomObj = carouselIndicator.getDomObj();
+            carouselIndicatorDomObj.addEventListener("mouseenter", enterEvent=>{
+                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":"#ffa500"} );
                     });
 
-            carouselIndicator.addEventListener("mouseleave", enterEvent=>{
-                    CssHelper.assignStyleProp(carouselIndicator,{"background":"#ff0000"});
+            carouselIndicatorDomObj.addEventListener("mouseleave", enterEvent=>{
+                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":"#ff0000"});
                     });
 
-            carouselIndicator.setAttribute(mFlexiIDKey, flexiID);
+            // carouselIndicator.setAttribute(mFlexiIDKey, flexiID);
+            carouselIndicator.setFlexiID(flexiID);
+
+            mFlexiImagePaths.push(flexiImagePath);
             mFlexiIndicators.push(carouselIndicator);
-            mFlexiContainer.appendChild(carouselIndicator);
+            mFlexiContainer.appendChild(carouselIndicatorDomObj);
 
-            let mFlexiImage = new FlexiImg(mFlexiImageProperties,true);
+            let mFlexiImage = new FlexiImg(mFlexiImageProperties,true, flexiID);
             mFlexiImage.adjustCssProp("background",
                                           `url(${flexiImagePath}) center center no-repeat`);
-
             mFlexiImages.push(mFlexiImage.build());
-
         });
 
     
+    mFlexiImages.forEach(function(image){
+
+        // image.update({"left": Measures.px(image.getFlexiID() * mFlexiContainerWidth )});
+        image.translate(image.getFlexiID() * mFlexiContainerWidth ,0);
+        mFlexiContainer.appendChild(image.getDomObj());
+    });
     
-    
-    for(let i=0; i < mFlexiImageBufferSize; i++){
-        let mFlexiImage = new FlexiImg(mFlexiImageProperties,true)
-    }
     
     
 }

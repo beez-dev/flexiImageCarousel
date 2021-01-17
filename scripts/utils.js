@@ -42,12 +42,25 @@ class CssHelper{
 
 class ObjectUtils{
 
-
     static propertyAppend(objectliteral, propertyObjectLiteral){
         for(let property in propertyObjectLiteral){
             objectliteral[property] = propertyObjectLiteral[property];
         }
+    }
 
+    static objectPrint(object){
+        console.log("*********** printing : "+object+"************************");
+        for(let prop in object){
+            console.log(`key: ${prop} , value: ${object[prop]}`);
+        }
+    }
+
+
+    static printFlexiObject(object, subProperty){
+        console.log("*********** printing : "+object+"************************");
+        for(let prop in object){
+            console.log(`key: ${prop} , value: ${object[prop].getFlexiID()}`);
+        }
     }
 
 }
