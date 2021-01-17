@@ -40,8 +40,11 @@ class FlexiRoundQueue{
 
         this.mFlexiQueueHash[lastPosition] = poppedFlexiObject;
         this.mFlexiImgHash[poppedFlexiObject.getFlexiID()] = lastPosition;
+
         poppedFlexiObject.setXCoord((this.mFlexiQueueHash[lastPosition - 1].getXCoord())+mFlexiContainerWidth);
-        poppedFlexiObject.setYCoord(this.mFlexiQueueHash[lastPosition - 1].getYCoord());
+        // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[lastPosition - 1].getYCoord()); /* y coord is not altered, uncomment if required */
+        poppedFlexiObject.refreshPosition();
+        console.log("image roundShiftedL: ", poppedFlexiObject.getFlexiID() );
         return poppedFlexiObject;
     }
 
@@ -56,6 +59,31 @@ class FlexiRoundQueue{
 
         this.mFlexiQueueHash[0] = poppedFlexiObject;
         this.mFlexiImgHash[poppedFlexiObject.getFlexiID()] = 0;
+
+        poppedFlexiObject.setXCoord( (this.mFlexiQueueHash[1].getXCoord()) - mFlexiContainerWidth );
+        poppedFlexiObject.refreshPosition();
+        // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[1].getYCoord()); /* y coord is not altered, uncomment if required */
+        console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
+        /*TODO*/
+        return poppedFlexiObject;
+
+    }
+
+    roundShiftR_frontHead(){
+        let lastPosition = this.getFlexiPosition() - 1;
+        let poppedFlexiObject = this.mFlexiQueueHash[lastPosition];
+        for(let i=lastPosition; i > 0; i--){
+            this.mFlexiQueueHash[i] = this.mFlexiQueueHash[i-1];
+            this.mFlexiImgHash[this.mFlexiQueueHash[i].getFlexiID()]=i;
+        }
+
+        // this.mFlexiQueueHash[0] = poppedFlexiObject;
+        this.mFlexiImgHash[poppedFlexiObject.getFlexiID()] = 0;
+
+        poppedFlexiObject.setXCoord( (this.mFlexiQueueHash[0].getXCoord()) - mFlexiContainerWidth );
+        poppedFlexiObject.refreshPosition();
+        // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[1].getYCoord()); /* y coord is not altered, uncomment if required */
+        console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
         /*TODO*/
         return poppedFlexiObject;
 

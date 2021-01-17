@@ -24,6 +24,8 @@ const mFlexiSpeed = 1000;
 const mFlexiActivePosition = 0;
 
 const mFlexiTransitionDelay = 1000; /* millisecond */
+const mFlexiHoldDelay = 1000;
+const mFlexiTransitionSmoothness = 10;/*ftd units - frames per transition delay */
 
 // const mFlexiImageBufferSize = 4; /* possible optimization feature */
 

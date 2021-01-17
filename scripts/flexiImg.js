@@ -76,6 +76,11 @@ class FlexiImg{
         }
     }
 
+    refreshPosition(){
+        this.update({"left":Measures.px(this.getXCoord()),
+                     "top":Measures.px(this.getYCoord())
+                        });
+    }
 
     translate(x, y){
         this.setXCoord(this.getXCoord() + x);
