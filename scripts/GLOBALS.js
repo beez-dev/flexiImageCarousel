@@ -16,7 +16,7 @@ const mFlexiIndicatorSize = 10;
 const mFlexiIndicatorMarginRight = 10;
 const mFlexiIndicatorMarginBottom = 10;
 const mFlexiIndicatorColor = "#ff0000";
-const mFlexiIndicatorHoverColor = "#ffa500";
+const mFlexiIndicatorHoverColor = "#000000";
 const mFlexiIDKey = "mFlexiID";/* flexi queue */
 const mFlexiQueueKey = "mFlexiQKey"
 
@@ -26,6 +26,9 @@ const mFlexiActivePosition = 0;
 const mFlexiTransitionDelay = 1000; /* millisecond */
 const mFlexiHoldDelay = 1000;
 const mFlexiTransitionSmoothness = 10;/*ftd units - frames per transition delay */
+
+
+
 
 // const mFlexiImageBufferSize = 4; /* possible optimization feature */
 

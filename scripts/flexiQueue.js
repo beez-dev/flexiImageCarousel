@@ -8,11 +8,16 @@ class FlexiRoundQueue{
         this.mFlexiQueueHash = {};
         this.mFlexiImgHash = {};
         this.activeImagePosition = 0;
+        this.elementCount = flexiObjects.length;
         /* TC */console.log("flexiQueue.js run");
         for(let i =0; i < flexiObjects.length; i++){
             this.add(flexiObjects[i]);
         }
 
+    }
+
+    getElementCount(){
+        return this.elementCount;
     }
 
     setActiveImagePosition(position){

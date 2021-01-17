@@ -13,7 +13,7 @@ function initialSetup(){
     CssHelper.assignStyleProp(mFlexiContainer,{
             "position":"relative",
             "border":"none", /* border is not allowed else height/width miscalculation */
-           /*  "overflow":"hidden" */
+            "overflow":"hidden"
         });
   
 
@@ -56,7 +56,7 @@ function initialSetup(){
     let indicatorBottomMargin = 10;
     let indicatorMarginRight = 10;
     let carouselIndicatorProps = {
-            "background":"#ff0000",
+            "background":mFlexiIndicatorColor,
             "backgroundSize":"cover",
             "border":"none",
             "borderRadius":Measures.px(100),
@@ -67,12 +67,16 @@ function initialSetup(){
             "position":"absolute",
             "bottom": Measures.px(0),
             "left":"0px",
-            "zIndex":2
+            "zIndex":2,
         };
     
     let totalFlexiIndicatorWidth = mFlexiImgCount * (mFlexiIndicatorSize + mFlexiIndicatorMarginRight - 1); /* -1 for rightmost margin is not counted */
     let flexiIndicatorSpacingFactor = mFlexiIndicatorSize + mFlexiIndicatorMarginRight;
     let mFlexiLeft = Math.floor(mFlexiContainerWidth/2) - ( Math.floor( totalFlexiIndicatorWidth/2 ) );  
+    
+
+   
+
     
     let mFlexiImageProperties = {
                                     "background":"",
@@ -95,19 +99,20 @@ function initialSetup(){
             mFlexiLeft += flexiIndicatorSpacingFactor;
             carouselIndicator = carouselIndicator.build();/* conversion to a DOM element */
             let carouselIndicatorDomObj = carouselIndicator.getDomObj();
-            carouselIndicatorDomObj.addEventListener("mouseenter", enterEvent=>{
-                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":"#ffa500"} );
+            /* carouselIndicatorDomObj.addEventListener("mouseenter", enterEvent=>{
+                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":mFlexiIndicatorHoverColor} );
                     });
 
             carouselIndicatorDomObj.addEventListener("mouseleave", enterEvent=>{
-                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":"#ff0000"});
-                    });
+                    CssHelper.assignStyleProp(carouselIndicatorDomObj,{"background":mFlexiIndicatorColor});
+                    }); */
 
             // carouselIndicator.setAttribute(mFlexiIDKey, flexiID);
             carouselIndicator.setFlexiID(flexiID);
 
             mFlexiImagePaths.push(flexiImagePath);
             mFlexiIndicators.push(carouselIndicator);
+
             mFlexiContainer.appendChild(carouselIndicatorDomObj);
 
             let mFlexiImage = new FlexiImg(mFlexiImageProperties,true, flexiID);
@@ -115,6 +120,8 @@ function initialSetup(){
                                           `url(${flexiImagePath}) center center no-repeat`);
             mFlexiImages.push(mFlexiImage.build());
         });
+
+    mFlexiIndicators[0].update({"backgroundColor": mFlexiIndicatorHoverColor});
 
     
     mFlexiImages.forEach(function(image){

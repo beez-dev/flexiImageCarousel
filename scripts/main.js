@@ -21,8 +21,11 @@ function main(){
 
             if(currentIteration == 0){
                 if(directiveFactor > 0){
-                    flexiQueue.roundShiftR();
+                    for(let i=0; i < distanceUnits; i++){
+                        flexiQueue.roundShiftR();
+                    }
                 }
+                
             }
 
             for(let eachImage in flexiQueue.getFlexiQueueHash()){
@@ -34,11 +37,11 @@ function main(){
 
                 traversalDifferenceError =  totalDistanceToTraverse - translativeAccumulation;
 
-                /* if(traversalDifferenceError > 0){
+                if(traversalDifferenceError > 0){
                     for(let eachImage in flexiQueue.getFlexiQueueHash()){
                         flexiQueue.getFlexiQueueHash()[eachImage].translate(directiveFactor * traversalDifferenceError, 0);
                     }
-                } */
+                }
 
                 if(directiveFactor < 0){
                     for(let i=0; i < distanceUnits; i++){
@@ -73,29 +76,80 @@ function main(){
     mFlexiIndicators.forEach(
         function(indicator){
             indicator.addOnClickListener(function(event){
+                
                 let targetIndicatorId = indicator.getFlexiID();
-                /* TC */ console.log("targetImageId is: ", targetIndicatorId);
-                /* TC */ console.log("intial active image position: ", flexiQueue.getActiveImagePosition());
                 let targetImagePosition = targetIndicatorId;
                 let targetDistance = flexiQueue.getActiveImagePosition() - targetImagePosition;
-                /* TC */console.log('target image position is: ', targetImagePosition);
-                /* TC */console.log('targetDistance is: ', targetDistance);
                 flexiQueue.setActiveImagePosition(targetIndicatorId);
-                console.log("new target image position: ", targetIndicatorId);
+
+                for(let i =0; i < mFlexiIndicators.length; i++){
+                    if(mFlexiIndicators[i].getFlexiID() === targetIndicatorId){
+                        console.log("match");
+                        mFlexiIndicators[i].update({"background":mFlexiIndicatorHoverColor});
+                    }else{
+                        console.log("unmatch");
+                        mFlexiIndicators[i].update({"background": mFlexiIndicatorColor});
+                    }
+                }
+
                 let directiveFactor = 0;
 
                 if(targetDistance != 0){
                     if(targetDistance > 0){
                         directiveFactor = 1;
                     }else{
-                        directiveFactor = -1;
+                        directiveFactor = -1;/* move towards the right */
                     }
-                    
                     scroll( Math.abs(targetDistance), directiveFactor );
                 }
 
             });
         });
+
+
+    leftArrow.addOnClickListener(
+        function(event){
+            
+            let activeImagePosition = flexiQueue.getActiveImagePosition();
+            let targetId = (activeImagePosition + 1)%flexiQueue.getElementCount();
+            // if(targetId === -1){targetId = flexiQueue.getElementCount();}
+            flexiQueue.setActiveImagePosition(targetId);
+
+            for(let i =0; i < mFlexiIndicators.length; i++){
+                if(mFlexiIndicators[i].getFlexiID() === targetId){
+                    console.log("match");
+                    mFlexiIndicators[i].update({"background":mFlexiIndicatorHoverColor});
+                }else{
+                    console.log("unmatch");
+                    mFlexiIndicators[i].update({"background": mFlexiIndicatorColor});
+                }
+            }
+
+            scroll(1, -1);
+        }
+    );
+
+
+    rightArrow.addOnClickListener(
+        function(event){
+            
+            let activeImagePosition = flexiQueue.getActiveImagePosition();
+            let targetId = (activeImagePosition - 1);
+            if(targetId === -1){targetId = flexiQueue.getElementCount() - 1;}
+            flexiQueue.setActiveImagePosition(targetId);
+
+            for(let i =0; i < mFlexiIndicators.length; i++){
+                if(mFlexiIndicators[i].getFlexiID() === targetId){
+                    console.log("match");
+                    mFlexiIndicators[i].update({"background":mFlexiIndicatorHoverColor});
+                }else{
+                    console.log("unmatch");
+                    mFlexiIndicators[i].update({"background": mFlexiIndicatorColor});
+                }
+            }
+            scroll(1, 1);
+        }
+    );
 
 }
 
