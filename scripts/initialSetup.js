@@ -38,13 +38,13 @@ function initialSetup(){
 
                 
     leftArrow = new FlexiImg(carouselArrowProp, false, -1);/* negative indices dont change dynamically */
-    leftArrow.adjustCssProp("background", `url(${mFlexiCarouselLeftArrowImg}) center center no-repeat` );
+    leftArrow.adjustCssProp("background", "url(images/icons/IC_leftArrow.svg) center center no-repeat" );
     leftArrow.adjustCssProp("marginLeft", Measures.px("10"));
     leftArrow= leftArrow.build();
     mFlexiContainer.appendChild(leftArrow.getDomObj());
 
     rightArrow = new FlexiImg(carouselArrowProp, false, -2);
-    rightArrow.adjustCssProp("background", `url(${mFlexiCarouselRightArrowImg}) center center no-repeat`);
+    rightArrow.adjustCssProp("background", "url(images/icons/IC_rightArrow.svg) center center no-repeat");
     rightArrow.adjustCssProp("right", Measures.px(0));
     rightArrow.adjustCssProp("margin-right", Measures.px(10));
     rightArrow = rightArrow.build();

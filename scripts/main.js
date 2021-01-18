@@ -147,9 +147,9 @@ function main(){
     leftArrow.addOnClickListener(
         function(event){
 
-            leftArrow.update({"background": "url(../images/icons/IC_leftArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
+            leftArrow.update({"background": "url(images/icons/IC_leftArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
             setTimeout(function(){
-                leftArrow.update({"background":"url(../images/icons/IC_leftArrow.svg) center center no-repeat","backgroundSize": "contain"});
+                leftArrow.update({"background":"url(images/icons/IC_leftArrow.svg) center center no-repeat","backgroundSize": "contain"});
             }, (mFlexiTransitionDelay+100));
             flexiQueue.setHoldTransition(true);
             leftArrowHandler();
@@ -159,9 +159,9 @@ function main(){
     rightArrow.addOnClickListener(
         function(event){
 
-            rightArrow.update({"background": "url(../images/icons/IC_rightArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
+            rightArrow.update({"background": "url(images/icons/IC_rightArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
             setTimeout(function(){
-                rightArrow.update({"background":"url(../images/icons/IC_rightArrow.svg) center center no-repeat","backgroundSize": "contain"});
+                rightArrow.update({"background":"url(images/icons/IC_rightArrow.svg) center center no-repeat","backgroundSize": "contain"});
             }, (mFlexiTransitionDelay + 100) );
             flexiQueue.setHoldTransition(true);
             rightArrowHandler();            
