@@ -12,20 +12,20 @@ const mFlexiCarouselLeftArrowImg = '../images/icons/IC_leftArrow.svg';
 const mFlexiCarouselRightArrowImg = '../images/icons/IC_rightArrow.svg';
 
 
-const mFlexiIndicatorSize = 10;
-const mFlexiIndicatorMarginRight = 10;
-const mFlexiIndicatorMarginBottom = 10;
-const mFlexiIndicatorColor = "#ff0000";
-const mFlexiIndicatorHoverColor = "#000000";
+const mFlexiIndicatorSize = indicatorSize;
+const mFlexiIndicatorMarginRight = indicatorSpacing;
+const mFlexiIndicatorMarginBottom = indicatorBottomSpacing;
+const mFlexiIndicatorColor = indicatorColor;
+const mFlexiIndicatorHoverColor = indicatorActiveColor;
 const mFlexiIDKey = "mFlexiID";/* flexi queue */
 const mFlexiQueueKey = "mFlexiQKey"
 
-const mFlexiSpeed = 1000;
-const mFlexiActivePosition = 0;
+// const mFlexiSpeed = 1000;
+// const mFlexiActivePosition = 0;
 
-const mFlexiTransitionDelay = 1000; /* millisecond */
-const mFlexiHoldDelay = 1000;
-const mFlexiTransitionSmoothness = 10;/*ftd units - frames per transition delay */
+const mFlexiTransitionDelay = transitionDelay; /* millisecond */
+const mFlexiHoldDelay = holdDelay;
+const mFlexiTransitionSmoothness = transitionSmoothness;/*ftd units - frames per transition delay */
 
 const mFlexiArrowHoverBG = "rgba(255, 255, 255, 0.22)";
 
