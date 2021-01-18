@@ -8,8 +8,8 @@ var mFlexiImgCount = 0;
 const mFlexiContainerType = mFlexiContainer.clientWidth > mFlexiContainer.clientHeight ? mFlexi_LANDSCAPE:mFlexi_PORTRAIT;
 const mFlexiContainerBGColor = "#ff0000;"
 
-const mFlexiCarouselLeftArrowImg = '../images/icons/IC_leftArrow.svg';
-const mFlexiCarouselRightArrowImg = '../images/icons/IC_rightArrow.svg';
+const mFlexiCarouselLeftArrowImg = 'images/icons/IC_leftArrow.svg';
+const mFlexiCarouselRightArrowImg = 'images/icons/IC_rightArrow.svg';
 
 
 const mFlexiIndicatorSize = indicatorSize;
