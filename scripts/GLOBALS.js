@@ -1,10 +1,12 @@
 const mFlexiContainerName = "flexi-carousel";
 const mFlexi_LANDSCAPE = "LANDSCAPE";
 const mFlexi_PORTRAIT = "PORTRAIT";
+const mFlexiContainers = Array.from( document.getElementsByClassName(mFlexiContainerName) );
+var mFlexiAssetGroups = [];
+
 const mFlexiContainer = document.getElementsByClassName(mFlexiContainerName)[0];
 const mFlexiContainerWidth = mFlexiContainer.clientWidth;
 const mFlexiContainerHeight = mFlexiContainer.clientHeight;
-var mFlexiImgCount = 0;
 const mFlexiContainerType = mFlexiContainer.clientWidth > mFlexiContainer.clientHeight ? mFlexi_LANDSCAPE:mFlexi_PORTRAIT;
 const mFlexiContainerBGColor = "#ff0000;"
 
@@ -20,6 +22,8 @@ const mFlexiIndicatorHoverColor = "#000000";
 const mFlexiIDKey = "mFlexiID";/* flexi queue */
 const mFlexiQueueKey = "mFlexiQKey"
 
+
+
 const mFlexiSpeed = 1000;
 const mFlexiActivePosition = 0;
 
@@ -31,4 +35,3 @@ const mFlexiArrowHoverBG = "rgba(255, 255, 255, 0.22)";
 
 
 // const mFlexiImageBufferSize = 4; /* possible optimization feature */
-

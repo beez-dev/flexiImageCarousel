@@ -9,7 +9,7 @@ class FlexiRoundQueue{
         this.mFlexiImgHash = {};
         this.activeImagePosition = 0;
         this.elementCount = flexiObjects.length;
-        /* TC */console.log("flexiQueue.js run");
+        /* TC *///console.log("flexiQueue.js run");
         for(let i =0; i < flexiObjects.length; i++){
             this.add(flexiObjects[i]);
         }
@@ -57,7 +57,7 @@ class FlexiRoundQueue{
         poppedFlexiObject.setXCoord((this.mFlexiQueueHash[lastPosition - 1].getXCoord())+mFlexiContainerWidth);
         // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[lastPosition - 1].getYCoord()); /* y coord is not altered, uncomment if required */
         poppedFlexiObject.refreshPosition();
-        console.log("image roundShiftedL: ", poppedFlexiObject.getFlexiID() );
+        //console.log("image roundShiftedL: ", poppedFlexiObject.getFlexiID() );
         return poppedFlexiObject;
     }
 
@@ -76,7 +76,7 @@ class FlexiRoundQueue{
         poppedFlexiObject.setXCoord( (this.mFlexiQueueHash[1].getXCoord()) - mFlexiContainerWidth );
         poppedFlexiObject.refreshPosition();
         // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[1].getYCoord()); /* y coord is not altered, uncomment if required */
-        console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
+        //console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
         /*TODO*/
         return poppedFlexiObject;
 
@@ -96,7 +96,7 @@ class FlexiRoundQueue{
         poppedFlexiObject.setXCoord( (this.mFlexiQueueHash[0].getXCoord()) - mFlexiContainerWidth );
         poppedFlexiObject.refreshPosition();
         // poppedFlexiObject.setYCoord(this.mFlexiQueueHash[1].getYCoord()); /* y coord is not altered, uncomment if required */
-        console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
+        //console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
         /*TODO*/
         return poppedFlexiObject;
     }
