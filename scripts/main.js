@@ -106,11 +106,9 @@ function main(){
             });
         });
 
-
-    leftArrow.addOnClickListener(
-        function(event){
-            
-            let activeImagePosition = flexiQueue.getActiveImagePosition();
+    
+    function leftArrowHandler(){
+        let activeImagePosition = flexiQueue.getActiveImagePosition();
             let targetId = (activeImagePosition + 1)%flexiQueue.getElementCount();
             // if(targetId === -1){targetId = flexiQueue.getElementCount();}
             flexiQueue.setActiveImagePosition(targetId);
@@ -126,14 +124,10 @@ function main(){
             }
 
             scroll(1, -1);
-        }
-    );
+    }
 
-
-    rightArrow.addOnClickListener(
-        function(event){
-            
-            let activeImagePosition = flexiQueue.getActiveImagePosition();
+    function rightArrowHandler(){
+        let activeImagePosition = flexiQueue.getActiveImagePosition();
             let targetId = (activeImagePosition - 1);
             if(targetId === -1){targetId = flexiQueue.getElementCount() - 1;}
             flexiQueue.setActiveImagePosition(targetId);
@@ -148,9 +142,41 @@ function main(){
                 }
             }
             scroll(1, 1);
+    }
+
+    leftArrow.addOnClickListener(
+        function(event){
+
+            leftArrow.update({"background": "url(../images/icons/IC_leftArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
+            setTimeout(function(){
+                leftArrow.update({"background":"url(../images/icons/IC_leftArrow.svg) center center no-repeat","backgroundSize": "contain"});
+            }, (mFlexiTransitionDelay+100));
+            flexiQueue.setHoldTransition(true);
+            leftArrowHandler();
         }
     );
 
+    rightArrow.addOnClickListener(
+        function(event){
+
+            rightArrow.update({"background": "url(../images/icons/IC_rightArrow_Active.svg) center center no-repeat","backgroundSize": "contain"});
+            setTimeout(function(){
+                rightArrow.update({"background":"url(../images/icons/IC_rightArrow.svg) center center no-repeat","backgroundSize": "contain"});
+            }, (mFlexiTransitionDelay + 100) );
+            flexiQueue.setHoldTransition(true);
+            rightArrowHandler();            
+        }
+    );
+    
+
+    setInterval(
+        function(){
+            if(!flexiQueue.getHoldTransition()){
+                leftArrowHandler();
+            }else{
+                flexiQueue.setHoldTransition(false);
+            }
+        }, (mFlexiHoldDelay+mFlexiTransitionDelay)); 
 }
 
 

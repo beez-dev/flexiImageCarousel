@@ -13,7 +13,15 @@ class FlexiRoundQueue{
         for(let i =0; i < flexiObjects.length; i++){
             this.add(flexiObjects[i]);
         }
+        this.holdTransition = false;
+    }
 
+    getHoldTransition(){
+        return this.holdTransition;
+    }
+
+    setHoldTransition(setToHold){
+        this.holdTransition = setToHold;/* boolen expected */
     }
 
     getElementCount(){
@@ -91,7 +99,6 @@ class FlexiRoundQueue{
         console.log("image roundShiftedR: ", poppedFlexiObject.getFlexiID() );
         /*TODO*/
         return poppedFlexiObject;
-
     }
 
 

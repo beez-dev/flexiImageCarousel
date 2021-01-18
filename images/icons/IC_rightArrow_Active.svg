@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="IC_rightArrow.svg">
+   sodipodi:docname="IC_rightArrow_Active.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.9571431"
-     inkscape:cx="189.35355"
-     inkscape:cy="137.41277"
+     inkscape:zoom="2.957143"
+     inkscape:cx="162.2317"
+     inkscape:cy="155.98129"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -58,7 +58,7 @@
      transform="translate(-81.84605,-118.87941)">
     <path
        id="rect10"
-       style="fill:#b2b2b2;stroke-width:2.91672;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000;fill-opacity:0.2"
+       style="fill:#cccccc;stroke-width:2.91672;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000;fill-opacity:0.69999999"
        d="M 126.27043,148.5 83.729568,121.28897 114.60494,148.5 83.729568,175.71103 Z"
        sodipodi:nodetypes="ccccc" />
   </g>

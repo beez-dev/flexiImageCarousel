@@ -50,6 +50,26 @@ function initialSetup(){
     rightArrow = rightArrow.build();
     mFlexiContainer.appendChild(rightArrow.getDomObj());
 
+    rightArrow.getDomObj().addEventListener("mouseenter", enterEvent=>{
+                    rightArrow.update({"backgroundColor":mFlexiArrowHoverBG} );
+                    });
+
+    rightArrow.getDomObj().addEventListener("mouseleave", enterEvent=>{
+            setTimeout(function(){
+                rightArrow.update({"backgroundColor":"#ffffff00"});
+                }, 100);
+            });
+
+    leftArrow.getDomObj().addEventListener("mouseenter", enterEvent=>{
+                    leftArrow.update({"backgroundColor":mFlexiArrowHoverBG} );
+                    });
+
+    leftArrow.getDomObj().addEventListener("mouseleave", enterEvent=>{
+            setTimeout(function(){
+                leftArrow.update({"backgroundColor":"#ffffff00"});
+                }, 100);
+            });
+
     let mFlexiImgTags = mFlexiContainer.getElementsByTagName("img");
 
     let mFlexiImgCount = mFlexiImgTags.length;
@@ -88,7 +108,6 @@ function initialSetup(){
                                     "left":Measures.px(0),
                                     "zIndex":1
                                 };
-    
     Array.from(mFlexiImgTags).forEach(
         function(eachImageTag){
             let flexiImagePath = eachImageTag.getAttribute("src");
